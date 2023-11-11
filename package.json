@@ -1,0 +1,6 @@
+{
+  "name": "gsc",
+  "dependencies": {
+    "@dataform/core": "2.4.2"
+  }
+}
