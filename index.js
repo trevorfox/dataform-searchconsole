@@ -4,7 +4,6 @@ const timeframe = require("./includes/timeframe");
 module.exports = (params) => {
 
     params = {
-        projectConfig: dataform.projectConfig,
         gscSchema: 'searchconsole',
         defaultWindowOffset: 2,
         ...params
