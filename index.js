@@ -25,7 +25,8 @@ module.exports = (params) => {
     return {
         gscQuery: templates.gsc_schema,
         top_n_url_keywords: templates.top_n_url_keywords,
-        timeframe: timeframe.timeframer(params.defaultWindowOffset) 
+        get_distincts: templates.get_distincts,
+        timeframe: timeframe.timeframer(params.default_window_offset) 
     }
 
 
