@@ -1,11 +1,12 @@
 const templates = require("./includes/templates");
+const timeframe = require("./includes/timeframe");
 
 module.exports = (params) => {
 
     params = {
+        projectConfig: dataform.projectConfig,
         gscSchema: 'searchconsole',
-        defaultStartDate: 'current_date() - 28 - 2',
-        defaultEndDate: 'current_date() - 2',
+        defaultWindowOffset: 2,
         ...params
     }
 
@@ -24,7 +25,8 @@ module.exports = (params) => {
 
     return {
         gscWindow: templates.gscWindow,
-        gscTopUrlKeywords: templates.gscTopUrlKeywords
+        gscTopUrlKeywords: templates.gscTopUrlKeywords,
+        timeframe: timeframe.timeframeFactory(params.defaultWindowOffset) 
     }
 
 
