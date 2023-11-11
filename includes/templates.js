@@ -29,8 +29,8 @@ function top_n_url_keywords(tableRef, n, timeFrameStart, timeFrameEnd) {
 }
 function get_distincts(tableRef, header, timeFrameStart, timeFrameEnd, whereConditions) {
     return `
-    select distinct ${header}
-    from ${tableRef}
+    select distinct t.${header}
+    from ${tableRef} t
     where data_date between ${timeFrameStart} and ${timeFrameEnd}
         ${Array.isArray(whereConditions) && whereConditions.length > 0 ? whereConditions.map((x) => 'and ' + x).join('\n\t') : '' }
     `
