@@ -1,4 +1,4 @@
-function timeframeFactory(defaultOffset){
+function timeframer(defaultOffset){
     return function(duration, delay, offset){
         offset = offset || defaultOffset;
         return {
@@ -8,4 +8,4 @@ function timeframeFactory(defaultOffset){
     }
 }
 
-module.exports = { timeframeFactory }
+module.exports = { timeframer }

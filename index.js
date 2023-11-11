@@ -4,28 +4,28 @@ const timeframe = require("./includes/timeframe");
 module.exports = (params) => {
 
     params = {
-        gscSchema: 'searchconsole',
-        defaultWindowOffset: 2,
+        gsc_schema: 'searchconsole',
+        default_window_offset: 2,
         ...params
     }
 
     const gscTables = [
-        'searchdata_site_impression',
-        'searchdata_url_impression',
-        'ExportLog'
+       'searchdata_site_impression',
+       'searchdata_url_impression',
+       'ExportLog'
     ]
 
     gscTables.forEach(function(table) {
         declare({
-            schema: params.gscSchema,
+            schema: params.gsc_schema,
             name: table
         });
     })
 
     return {
-        gscWindow: templates.gscWindow,
-        gscTopUrlKeywords: templates.gscTopUrlKeywords,
-        timeframe: timeframe.timeframeFactory(params.defaultWindowOffset) 
+        gscQuery: templates.gsc_schema,
+        top_n_url_keywords: templates.top_n_url_keywords,
+        timeframe: timeframe.timeframer(params.defaultWindowOffset) 
     }
 
 
