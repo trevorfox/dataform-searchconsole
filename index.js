@@ -23,7 +23,7 @@ module.exports = (params) => {
     })
 
     return {
-        gscQuery: templates.gsc_schema,
+        gsc_query: templates.gsc_query,
         top_n_url_keywords: templates.top_n_url_keywords,
         get_distincts: templates.get_distincts,
         timeframe: timeframe.timeframer(params.default_window_offset) 
