@@ -11,7 +11,7 @@ function gsc_query(tableRef, headers, timeFrameStart, timeFrameEnd, whereConditi
         round((sum(i.${positionMetric}) / sum(i.impressions)) + 1, 1) avg_position
     from ${tableRef} i 
     where i.data_date between ${timeFrameStart} and ${timeFrameEnd}
-        ${Array.isArray(whereConditions) && whereConditions.length > 0 ? whereConditions.map((x,i) => 'and ' + x).join('\n\t') : '' }
+        ${Array.isArray(whereConditions) && whereConditions.length > 0 ? whereConditions.map((x) => 'and ' + x).join('\n\t') : '' }
     ${headers.length > 0 ? 'group by ' + headers.map((x,i) => i + 1).join(',') : '' }
     `
 }
@@ -27,8 +27,17 @@ function top_n_url_keywords(tableRef, n, timeFrameStart, timeFrameEnd) {
     group by 1
     `
 }
+function get_distincts(tableRef, header, timeFrameStart, timeFrameEnd, whereConditions) {
+    return `
+    select distinct t.${header}
+    from ${tableRef} t
+    where data_date between ${timeFrameStart} and ${timeFrameEnd}
+        ${Array.isArray(whereConditions) && whereConditions.length > 0 ? whereConditions.map((x) => 'and ' + x).join('\n\t') : '' }
+    `
+}
 
 module.exports = {
     gsc_query,
-    top_n_url_keywords
+    top_n_url_keywords,
+    get_distincts,
 }
